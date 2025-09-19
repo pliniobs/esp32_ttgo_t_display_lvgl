@@ -1,0 +1,19 @@
+# ESP-IDF generated build artifacts
+build/
+sdkconfig
+sdkconfig.old
+
+# Python generated files
+__pycache__/
+*.pyc
+
+# IDE-specific files (e.g., VS Code)
+.vscode/
+
+# Dependency management files (if using idf-component-manager)
+managed_components/
+dependencies.lock
+
+# Log files and other temporary outputs
+*.log
+compile_commands.json

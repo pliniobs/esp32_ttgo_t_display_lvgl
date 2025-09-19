@@ -1,0 +1,2 @@
+/home/plinio/workspace_esp/ttgo_TDisplay_LVGL/CMakeFiles/edit_cache.dir
+/home/plinio/workspace_esp/ttgo_TDisplay_LVGL/CMakeFiles/rebuild_cache.dir

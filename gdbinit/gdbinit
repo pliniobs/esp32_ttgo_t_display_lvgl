@@ -1,0 +1,2 @@
+source /home/plinio/workspace_esp/ttgo_TDisplay_LVGL/gdbinit/symbols
+source /home/plinio/workspace_esp/ttgo_TDisplay_LVGL/gdbinit/connect
