@@ -1,32 +1,53 @@
-# _Sample project_
+# TTGO T-Display LVGL Example
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+This project demonstrates how to initialize and control the ST7789 LCD display on the TTGO T-Display board using ESP-IDF. The main application sets up SPI communication, configures the display, and draws a bitmap image.
 
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
+# Autor: Plinio Barbosa da Silva
+## Linkedin: https://www.linkedin.com/in/pl%C3%ADnio-barbosa-28171072/
 
+## Features
 
+- SPI bus initialization for LCD communication
+- ST7789 LCD panel configuration
+- Backlight and reset control
+- Bitmap image rendering
+- Periodic serial console output
 
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
+## Hardware
 
-## Example folder contents
+- TTGO T-Display (ESP32)
+- ST7789 LCD (240x135 resolution)
 
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
+## Pin Configuration
 
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
+| Signal      | GPIO |
+|-------------|------|
+| MOSI        | 19   |
+| MISO        | -1   |
+| SCLK        | 18   |
+| CS          | 5    |
+| DC          | 16   |
+| BL (Backlight) | 4 |
+| RST         | 23   |
 
-Below is short explanation of remaining files in the project folder.
+## Usage
 
-```
-├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
-```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+1. Clone this repository.
+2. Place your bitmap image data in `main/image.c`.
+3. Build and flash the project using ESP-IDF:
+
+    ```sh
+    idf.py build
+    idf.py flash
+    ```
+
+4. The display will show the image and print a message every second.
+
+## File Structure
+
+- `main/main.c`: Main application source code.
+- `main/image.c`: Bitmap image data to be displayed.
+
+## License
+
+See LICENSE for details.
