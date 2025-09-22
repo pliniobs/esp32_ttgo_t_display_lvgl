@@ -3,3 +3,8 @@
 // LVGL version: 9.2.2
 // Project name: Temperature_Display
 
+#include "../ui.h"
+
+void ui_comp_Label3_create_hook(lv_obj_t * comp)
+{
+}

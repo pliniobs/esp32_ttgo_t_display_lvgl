@@ -559,6 +559,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/plinio/workspace_esp/ttgo_TDisplay_LVGL/esp-idf/lvgl_ui/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/plinio/workspace_esp/ttgo_TDisplay_LVGL/esp-idf/espressif__esp_lvgl_port/cmake_install.cmake")
 endif()
 

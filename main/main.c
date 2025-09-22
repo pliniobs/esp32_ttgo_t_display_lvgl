@@ -54,27 +54,28 @@ static void lvgl_port_update_callback(lv_display_t *disp)
 {
     esp_lcd_panel_handle_t panel_handle = lv_display_get_user_data(disp);
     lv_display_rotation_t rotation = lv_display_get_rotation(disp);
-
     switch (rotation) {
     case LV_DISPLAY_ROTATION_0:
         // Rotate LCD display
         esp_lcd_panel_swap_xy(panel_handle, false);
-        esp_lcd_panel_mirror(panel_handle, true, false);
+        esp_lcd_panel_mirror(panel_handle, false, false);
+        esp_lcd_panel_set_gap(panel_handle, 52, 40); // The gap is 52 pixels on the left and 40 pixels on the top
         break;
     case LV_DISPLAY_ROTATION_90:
         // Rotate LCD display
         esp_lcd_panel_swap_xy(panel_handle, true);
-        esp_lcd_panel_mirror(panel_handle, true, true);
+        esp_lcd_panel_mirror(panel_handle, true, false);
+        esp_lcd_panel_set_gap(panel_handle, 40, 53); // The gap is 40 pixels on the left and 52 pixels on the top
         break;
     case LV_DISPLAY_ROTATION_180:
         // Rotate LCD display
-        esp_lcd_panel_swap_xy(panel_handle, false);
-        esp_lcd_panel_mirror(panel_handle, false, true);
+        //esp_lcd_panel_swap_xy(panel_handle, false);
+        //esp_lcd_panel_mirror(panel_handle, true, true);
         break;
     case LV_DISPLAY_ROTATION_270:
         // Rotate LCD display
-        esp_lcd_panel_swap_xy(panel_handle, true);
-        esp_lcd_panel_mirror(panel_handle, false, false);
+        //esp_lcd_panel_swap_xy(panel_handle, true);
+        //esp_lcd_panel_mirror(panel_handle, false, false);
         break;
     }
 }
@@ -91,6 +92,7 @@ static void lvgl_flush_cb(lv_display_t *disp, const lv_area_t *area, uint8_t *px
     lv_draw_sw_rgb565_swap(px_map, (offsetx2 + 1 - offsetx1) * (offsety2 + 1 - offsety1));
     // copy a buffer's content to a specific area of the display
     esp_lcd_panel_draw_bitmap(panel_handle, offsetx1, offsety1, offsetx2 + 1, offsety2 + 1, px_map);
+    
 }
 
 static void lvgl_tick(void *arg)
@@ -144,7 +146,7 @@ void app_main(void)
     // set the callback which can copy the rendered image to an area of the display
     lv_display_set_flush_cb(display, lvgl_flush_cb);
     
-    lv_display_set_rotation(display, LV_DISPLAY_ROTATION_180);
+    lv_display_set_rotation(display, LV_DISPLAY_ROTATION_90);
 
     /*nstall LVGL tick timer*/
     // Tick interface for LVGL (using esp_timer to generate 2ms periodic event)
@@ -218,7 +220,7 @@ void App_Display_Init(void){
 
     esp_lcd_panel_reset(panel_handle);
     esp_lcd_panel_init(panel_handle);
-    esp_lcd_panel_set_gap(panel_handle, 52, 40); // The gap is 52 pixels on the left and 40 pixels on the top
-    esp_lcd_panel_invert_color(panel_handle, true); // Don't invert color
+    esp_lcd_panel_invert_color(panel_handle, true); 
+    
     esp_lcd_panel_disp_on_off(panel_handle, true);
 }
