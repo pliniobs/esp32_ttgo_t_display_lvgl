@@ -23,9 +23,6 @@ extern "C" {
 // EVENTS
 extern lv_obj_t * ui____initial_actions0;
 
-// IMAGES AND IMAGE SETS
-LV_IMG_DECLARE(ui_img_squareline_logo_128_png);    // assets/squareline_logo_128.png
-
 // UI INIT
 void ui_init(void);
 void ui_destroy(void);

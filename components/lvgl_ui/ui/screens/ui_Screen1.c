@@ -5,10 +5,8 @@
 
 #include "../ui.h"
 
-lv_obj_t * uic_Image1;
 lv_obj_t * ui_Screen1 = NULL;
-lv_obj_t * ui_Label1 = NULL;
-lv_obj_t * ui_Image1 = NULL;
+lv_obj_t * ui_Panel1 = NULL;
 // event funtions
 
 // build funtions
@@ -18,25 +16,13 @@ void ui_Screen1_screen_init(void)
     ui_Screen1 = lv_obj_create(NULL);
     lv_obj_remove_flag(ui_Screen1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
-    ui_Label1 = lv_label_create(ui_Screen1);
-    lv_obj_set_width(ui_Label1, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Label1, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label1, 2);
-    lv_obj_set_y(ui_Label1, -98);
-    lv_obj_set_align(ui_Label1, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label1, "Plinio Barbosa");
-
-    ui_Image1 = lv_image_create(ui_Screen1);
-    lv_image_set_src(ui_Image1, &ui_img_squareline_logo_128_png);
-    lv_obj_set_width(ui_Image1, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Image1, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Image1, 0);
-    lv_obj_set_y(ui_Image1, 6);
-    lv_obj_set_align(ui_Image1, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_Image1, LV_OBJ_FLAG_CLICKABLE);     /// Flags
-    lv_obj_remove_flag(ui_Image1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-
-    uic_Image1 = ui_Image1;
+    ui_Panel1 = lv_obj_create(ui_Screen1);
+    lv_obj_set_width(ui_Panel1, 135);
+    lv_obj_set_height(ui_Panel1, 240);
+    lv_obj_set_align(ui_Panel1, LV_ALIGN_CENTER);
+    lv_obj_remove_flag(ui_Panel1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_border_color(ui_Panel1, lv_color_hex(0xF70202), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_opa(ui_Panel1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
 }
 
@@ -46,8 +32,6 @@ void ui_Screen1_screen_destroy(void)
 
     // NULL screen variables
     ui_Screen1 = NULL;
-    ui_Label1 = NULL;
-    uic_Image1 = NULL;
-    ui_Image1 = NULL;
+    ui_Panel1 = NULL;
 
 }
