@@ -8,15 +8,15 @@
         "deepid": -58320116,
         "children": [
           {
-            "guid": "GUID30589698-44426S2134262",
-            "deepid": 1985018113,
+            "guid": "GUID94227284-830896S3224265",
+            "deepid": 1512289929,
             "dont_export": false,
             "locked": false,
             "properties": [
               {
                 "nid": 10,
                 "strtype": "OBJECT/Name",
-                "strval": "Label1",
+                "strval": "Panel1",
                 "InheritedType": 10
               },
               {
@@ -47,18 +47,18 @@
                 "flags": 17,
                 "strtype": "OBJECT/Position",
                 "intarray": [
-                  -2,
-                  -56
+                  0,
+                  0
                 ],
                 "InheritedType": 7
               },
               {
                 "nid": 60,
-                "flags": 51,
+                "flags": 17,
                 "strtype": "OBJECT/Size",
                 "intarray": [
-                  1,
-                  1
+                  135,
+                  240
                 ],
                 "InheritedType": 7
               },
@@ -75,16 +75,16 @@
                 "InheritedType": 1
               },
               {
-                "nid": 110,
-                "strtype": "OBJECT/Clickable",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
                 "nid": 225,
                 "flags": 1048576,
                 "strtype": "OBJECT/Scrolling",
                 "InheritedType": 1
+              },
+              {
+                "nid": 230,
+                "strtype": "OBJECT/Scrollable",
+                "strval": "False",
+                "InheritedType": 2
               },
               {
                 "nid": 300,
@@ -117,43 +117,54 @@
                 "InheritedType": 1
               },
               {
-                "nid": 1010,
-                "strtype": "LABEL/Label",
-                "InheritedType": 1
-              },
-              {
-                "nid": 1020,
-                "strtype": "LABEL/Long_mode",
-                "strval": "WRAP",
-                "InheritedType": 3
-              },
-              {
-                "nid": 1030,
-                "strtype": "LABEL/Text",
-                "strval": "Plinio Barbosa",
-                "InheritedType": 10
-              },
-              {
                 "part": "lv.PART.MAIN",
+                "childs": [
+                  {
+                    "nid": 10000,
+                    "strtype": "_style/StyleState",
+                    "strval": "DEFAULT",
+                    "childs": [
+                      {
+                        "nid": 10710,
+                        "strtype": "_style/Border_Color",
+                        "intarray": [
+                          247,
+                          2,
+                          2,
+                          255
+                        ],
+                        "InheritedType": 7
+                      }
+                    ],
+                    "InheritedType": 1
+                  }
+                ],
+                "nid": 1010,
+                "strtype": "PANEL/Style_main",
+                "strval": "lv.PART.MAIN, Rectangle, Pad, Text, Transform",
+                "InheritedType": 11
+              },
+              {
+                "part": "lv.PART.SCROLLBAR",
                 "childs": [],
-                "nid": 1040,
-                "strtype": "LABEL/Style_main",
-                "strval": "lv.PART.MAIN, Text, Rectangle, Pad, Transform",
+                "nid": 1020,
+                "strtype": "PANEL/Style_scrollbar",
+                "strval": "lv.PART.SCROLLBAR, Rectangle, Pad",
                 "InheritedType": 11
               }
             ],
-            "saved_objtypeKey": "LABEL"
+            "saved_objtypeKey": "PANEL"
           },
           {
-            "guid": "GUID8374642-830894S580644265",
-            "deepid": -1932174777,
+            "guid": "GUID96994281-830898S1464265",
+            "deepid": -2131060702,
             "dont_export": false,
             "locked": false,
             "properties": [
               {
                 "nid": 10,
                 "strtype": "OBJECT/Name",
-                "strval": "Image1",
+                "strval": "Image2",
                 "InheritedType": 10
               },
               {
@@ -184,8 +195,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Position",
                 "intarray": [
-                  0,
-                  29
+                  1,
+                  -13
                 ],
                 "InheritedType": 7
               },
@@ -457,7 +468,7 @@
     "uiExportFolderPath": "/home/plinio/workspace_esp/ttgo_TDisplay_LVGL/components/lvgl_ui/ui",
     "projectExportFolderPath": "/home/plinio/workspace_esp/ttgo_TDisplay_LVGL/components/lvgl_ui/ui",
     "custom_variable_prefix": "uic",
-    "backup_cnt": 2,
+    "backup_cnt": 4,
     "autosave_cnt": 0,
     "group_color_cnt": 0,
     "lvgl_version": "9.2.2",

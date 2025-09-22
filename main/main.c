@@ -207,9 +207,10 @@ void App_Display_Init(void){
     ESP_ERROR_CHECK(esp_lcd_new_panel_io_spi((esp_lcd_spi_bus_handle_t)LCD_SPI_HOST, &io_config, &io_handle));
     
     esp_lcd_panel_dev_config_t panel_config = {
-        .data_endian = LCD_RGB_DATA_ENDIAN_LITTLE, // Data endian
+        .data_endian = LCD_RGB_DATA_ENDIAN_BIG, // Data endian
         .reset_gpio_num = LCD_PIN_NUM_RST,
         .rgb_ele_order = LCD_RGB_ELEMENT_ORDER_RGB,
+        .color_space = ESP_LCD_COLOR_SPACE_RGB, // Color space
         .bits_per_pixel = 16,
     };
     // Create LCD panel handle for ST7789, with the SPI IO device handle
@@ -218,9 +219,6 @@ void App_Display_Init(void){
     esp_lcd_panel_reset(panel_handle);
     esp_lcd_panel_init(panel_handle);
     esp_lcd_panel_set_gap(panel_handle, 52, 40); // The gap is 52 pixels on the left and 40 pixels on the top
-    //esp_lcd_panel_mirror(panel_handle, true, false);
-    //esp_lcd_panel_invert_color(panel_handle, false);
+    esp_lcd_panel_invert_color(panel_handle, true); // Don't invert color
     esp_lcd_panel_disp_on_off(panel_handle, true);
-
-    //esp_lcd_panel_swap_xy(panel_handle, true); // Swap X and Y axis
 }

@@ -7,6 +7,7 @@
 
 lv_obj_t * ui_Screen1 = NULL;
 lv_obj_t * ui_Panel1 = NULL;
+lv_obj_t * ui_Image2 = NULL;
 // event funtions
 
 // build funtions
@@ -24,6 +25,16 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_border_color(ui_Panel1, lv_color_hex(0xF70202), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_opa(ui_Panel1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    ui_Image2 = lv_image_create(ui_Screen1);
+    lv_image_set_src(ui_Image2, &ui_img_squareline_logo_128_png);
+    lv_obj_set_width(ui_Image2, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_Image2, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_Image2, 1);
+    lv_obj_set_y(ui_Image2, -13);
+    lv_obj_set_align(ui_Image2, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_Image2, LV_OBJ_FLAG_CLICKABLE);     /// Flags
+    lv_obj_remove_flag(ui_Image2, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+
 }
 
 void ui_Screen1_screen_destroy(void)
@@ -33,5 +44,6 @@ void ui_Screen1_screen_destroy(void)
     // NULL screen variables
     ui_Screen1 = NULL;
     ui_Panel1 = NULL;
+    ui_Image2 = NULL;
 
 }
