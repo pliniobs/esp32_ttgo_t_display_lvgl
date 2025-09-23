@@ -106,12 +106,14 @@ static void lvgl_port_task(void *arg)
     uint32_t time_till_next_ms = 0;
     uint32_t time_threshold_ms = 2000 / CONFIG_FREERTOS_HZ;
     while (1) {
-        _lock_acquire(&lvgl_api_lock);
-        time_till_next_ms = lv_timer_handler();
-        _lock_release(&lvgl_api_lock);
+        //time_till_next_ms = lv_timer_handler();
+  
         // in case of triggering a task watch dog time out
-        time_till_next_ms = MAX(time_till_next_ms, time_threshold_ms);
-        vTaskDelay(time_till_next_ms);
+        //time_till_next_ms = MAX(time_till_next_ms, time_threshold_ms);
+        //vTaskDelay(time_till_next_ms);
+        
+        lv_timer_handler();
+        vTaskDelay(10 / portTICK_PERIOD_MS);
     }
 }
 
@@ -173,9 +175,15 @@ void app_main(void)
     
     /*Create LVGL task*/
     xTaskCreate(lvgl_port_task, "LVGL", 4*4096, NULL, 2, NULL);
-
+    int cnt = 0;
     while(true) {
-        printf("Hello my balls!\n");
+        //_lock_acquire(&lvgl_api_lock);
+        lv_label_set_text_fmt(ui_Label4, "Hello my balls! %d", cnt);
+        //_lock_release(&lvgl_api_lock);
+        
+        printf("Hello my balls! %d\n", cnt);
+        cnt ++;
+        
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
 
