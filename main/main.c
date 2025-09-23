@@ -120,6 +120,12 @@ static void lvgl_port_task(void *arg)
 /** LVGL display initialization */
 void App_Display_Init(void);
 
+time_t now;
+char strftime_buf[24];
+char strfdate_buf[24];
+struct tm timeinfo;
+
+
 void app_main(void)
 {
 
@@ -177,17 +183,22 @@ void app_main(void)
     xTaskCreate(lvgl_port_task, "LVGL", 4*4096, NULL, 2, NULL);
     int cnt = 0;
     while(true) {
-        //_lock_acquire(&lvgl_api_lock);
-        lv_label_set_text_fmt(ui_Label4, "Hello my balls! %d", cnt);
-        //_lock_release(&lvgl_api_lock);
-        
-        printf("Hello my balls! %d\n", cnt);
-        cnt ++;
-        
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        time(&now);
+        localtime_r(&now, &timeinfo);
+        strftime(strftime_buf, sizeof(strftime_buf), "%H:%M:%S", &timeinfo);
+        strftime(strfdate_buf, sizeof(strfdate_buf), "%d/%m/%Y", &timeinfo);
+
+        _lock_acquire(&lvgl_api_lock);
+         lv_disp_load_scr(ui_Screen1);
+        lv_label_set_text_fmt(ui_Label1, "%s", strftime_buf);
+        lv_label_set_text_fmt(ui_Label2, "%s", strfdate_buf);
+        _lock_release(&lvgl_api_lock);
+        vTaskDelay(pdMS_TO_TICKS(5000));
+        lv_disp_load_scr(ui_Screen2);
+        vTaskDelay(pdMS_TO_TICKS(5000));
     }
 
-}   
+}       
 
 void App_Display_Init(void){
     gpio_set_direction(LCD_PIN_NUM_BL, GPIO_MODE_OUTPUT);

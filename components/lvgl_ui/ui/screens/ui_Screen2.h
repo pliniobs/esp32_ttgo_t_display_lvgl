@@ -3,19 +3,20 @@
 // LVGL version: 9.2.2
 // Project name: Temperature_Display
 
-#ifndef UI_SCREEN1_H
-#define UI_SCREEN1_H
+#ifndef UI_SCREEN2_H
+#define UI_SCREEN2_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// SCREEN: ui_Screen1
-extern void ui_Screen1_screen_init(void);
-extern void ui_Screen1_screen_destroy(void);
-extern lv_obj_t * ui_Screen1;
-extern lv_obj_t * ui_Label1;
-extern lv_obj_t * ui_Label2;
+// SCREEN: ui_Screen2
+extern void ui_Screen2_screen_init(void);
+extern void ui_Screen2_screen_destroy(void);
+extern lv_obj_t * ui_Screen2;
+extern lv_obj_t * ui_Label6;
+extern lv_obj_t * ui_Label3;
+extern lv_obj_t * ui_Image3;
 // CUSTOM VARIABLES
 
 #ifdef __cplusplus
